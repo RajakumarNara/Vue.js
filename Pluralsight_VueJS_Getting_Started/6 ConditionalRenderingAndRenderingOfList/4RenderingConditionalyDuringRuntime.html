@@ -1,0 +1,59 @@
+<!--Vue provides several directive to empower, conditionaly render during
+runtime:
+v-if,  v-else, v-show these directive serve unique purposes for that reason
+cover these directive in details in this section
+v-if v-else directive conditionally render content based on an expression
+
+v-show directive is to show content conditionaly at runtime. It is similar to 
+if directive 
+This is slightly different because in this case only dispaly css property change.
+v-show conditionaly set the CSS display property at runtime. 
+If expression on this directive evaluates, the elements display property set to none
+When do we use show directive, it always render the element.
+Show directive use to show or hided an html block.
+
+-->
+<html>
+    <head></head>
+    <body>   
+        <div id="app">
+        <button v-on:click="executeSearch" type="button">Search</button>                                            
+        <label>Query Results</label>
+        <p v-cloak>
+            <div v-if="beers.length === 0">No beers were returned</div>
+            <div v-else-if="beers.length === 1">1 beer was returned</div>
+            <div v-else>{{ beers.length }} beers were returned</div>
+        </p>        
+        <hr/>
+        <div v-show="beers.length===0">
+            No beers were returned. 
+        </div>
+        <div v-show="beers.length>0">
+            Beers will be returned here.
+        </div>
+        </div>     
+<script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#app',
+                data: {
+                    beers: []
+                },
+                methods: {
+                    executeSearch: function() {
+                        var randomCount = Math.floor(Math.random() * 4);
+
+                        this.beers = [];
+                        for (var i=0; i<randomCount; i++) {
+                            var beer = {
+                                id: (i+1),
+                                name: 'Beer #' + (i+1)
+                            };
+                            this.beers.push(beer);
+                        }
+                    }
+                }
+            });        
+        </script>
+           </body>
+           </html>

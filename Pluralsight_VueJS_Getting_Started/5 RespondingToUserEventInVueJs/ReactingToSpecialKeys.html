@@ -1,0 +1,38 @@
+<!--Keyboard short cuts:
+Popular keyboard short cuts are copy and paste Ctrl+C, Ctrl+v.
+These short cuts improve the experience of app, giving user more power
+for that reason, you may want to consider adding keyboard short cuts 
+to our vue apps with special keys.
+
+Special keys like Alt, Ctrl and Shift, technically know as modifier key.
+Modifier keys referred to as Special keys.
+Meta key is windows or command key.
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <input type="search" v-model.trim="searchText" 
+            v-on:keypress.enter.prevent="ExecuteNewSearch"
+            v-on:keyup.ctrl.enter="ExecuteSearchInNewWindow"
+            placeholder="Please enter search query here."/>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script>
+        var v=new Vue({
+            el:"#app",
+            data: {
+                searchText:""
+                },
+            methods:{
+                ExecuteNewSearch:function(){
+                    alert('ExecuteNewSearch');
+                },
+                ExecuteSearchInNewWindow:function(){
+                    alert('ExecuteSearchInNewWindow');
+                }
+            }
+        })
+        </script>
+    </body>
+</html>

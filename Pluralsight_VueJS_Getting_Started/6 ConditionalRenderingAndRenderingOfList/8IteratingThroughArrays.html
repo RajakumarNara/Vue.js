@@ -1,0 +1,56 @@
+<!--I can use v-for directive to iterate through Arrays. You can iterate over
+array of values, array of objects even array of arrays. To demonstrate, lets
+assume 
+
+Iterating through nested arrays. Property sections 
+pages1:
+            [
+                { number:1, url:'https://www.google.com/',sections:['A','B','C']},
+                { number:2, url:'https://www.youtube.com/',sections:['Y','Z']}
+            ] 
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            
+            <ul>
+                    <li v-for="page in pages">
+                      <a v-bind:href="page.url">{{page.number}}</a>
+                    </li>
+                </ul>
+                <hr/>
+                <ul>
+                        <li v-for="(page,i) in pages">
+                          <a v-bind:href="page.url">{{page.number}}</a>
+                          <small>i:{{i}}</small>
+                        </li>
+                    </ul>
+                <hr/>
+                <div v-for="page1 in pages1">
+                    <b>Page: {{page1.number}}</b>
+                    <div v-for="sec in page1.sections">
+                        {{page1.number}} - {{sec}}
+                    </div>
+                </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js"></script>
+        <script>
+        var v=new Vue({
+            el:"#app",
+            data:{
+                pages:[
+                    { number:1, url:'https://www.google.com/'},
+                    { number:2, url:'https://www.youtube.com/'}                    
+                    ]
+            ,
+            pages1:
+            [
+                { number:1, url:'https://www.google.com/',sections:['A','B','C']},
+                { number:2, url:'https://www.youtube.com/',sections:['Y','Z']}
+            ]  
+          }          
+        })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!--As app grow in size, they can take longer to load.
+In this situation, try to create a greate loading experience in our app.
+I can do this by rendering the elements after the app loaded.
+1. This can be useful of our app for slower network connections.
+2. Need for additional JS object initialization.
+To demonstrate
+1. v-cloak directive hides elements until view has compiled
+
+v-cloak required CSS.
+[v-cloak] {
+    display: none; //none value to display property hides the element, however 
+    this value does not impact layout. This only impact the visibility.
+    This behaviour helps prevent jerkey experience when app is in transition 
+    from loading state to run state
+  }
+
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="H://Project activities//vueJs_GitClone//vueJsStart//Pluralsight-VueJS-GettingStarted//Public//CSS//app.css"
+    </head>
+    <body>
+        <div id="app">
+            <h2>{{appName}}</h2>
+            <h3 v-cloak>{{appName}}</h3>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script>
+        var v=new Vue({
+            el:"#app",
+           data:{
+               appName:"Personal accounting"
+           }
+        })
+        </script>
+    </body>
+</html>

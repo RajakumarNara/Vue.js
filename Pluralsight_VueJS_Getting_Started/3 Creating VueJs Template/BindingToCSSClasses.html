@@ -1,0 +1,55 @@
+<!--Vue let me bind directly CSS classes. This is an
+improvement over binding CSS properties. This helps 
+me to maintain separation between your design and
+data. This separation helps code clean and maintainable
+To demonstrate-->
+<html>
+    <head>
+        <title>
+        </title>
+        <style>
+        .headers {
+            font-family: 'Verdana';
+            margin:0;
+            font-style: italic;
+            font-size: 50px;
+        }
+        .accent-color{
+            color: #FF6A00;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="growler">
+            <h2 v-text="appName"
+            v-bind:class="[accentColor,headers]">
+            </h2>
+            <h2 v-text="appName"
+            v-bind:class="headerStyles">
+            </h2>
+            <h2 v-text="appName"
+            v-bind:class="{'headers':true}"> <!--conditionaly
+            apply CSS class-->
+            </h2>
+            <h2 v-text="appName"
+            v-bind:class="{'headers':false,
+            'accent-color':isOnline}"> <!--conditionaly
+            apply CSS class-->
+            </h2>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+        <script type="text/javascript">
+        var v=new Vue({
+            el:'#growler',
+            data:{
+                appName:'Rajakumar',
+                isOnline:true,
+                accentColor:'accent-color',
+                headers:'headers',
+                headerStyles:['accent-color',
+                'headers']
+            }
+        })
+        </script>
+    </body>
+</html>

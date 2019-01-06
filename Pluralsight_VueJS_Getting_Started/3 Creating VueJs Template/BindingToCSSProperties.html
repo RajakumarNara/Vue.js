@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div id="app-name">
+        <!--Keep desigh seperate from logic.
+        Some time 2 role collied, if this happens, I am 
+    in a situation, where need to bind html style attribute
+I can bind style by v-bind directive. When binding to the 
+style attribute, Choose between 2 approaches:
+Binding to CSS properties:
+1. From a JS object
+2. From a JS array
+        Getting CSS properties from an Object: This approach 
+    looks very similar to traditional CSS approach, 
+except style string is JS object. "Each property name
+must be the name of a CSS property. The value associated
+with each property can be a property name or a static 
+value."
+          We can not use dashes in JS variable name
+"font-family" as JS property is out of scope. We are 
+changing property name from dashes to "Camel case"
+'fontFamily' 
+name.-->
+        <h4 v-bind:style="{color:colr,fontFamily:'verdana'}" >{{appName}}</h4>
+        <h4 v-bind:style="{color:color,fontFamily:'verdana'}" >{{appName}}</h4>
+        <div v-bind:style="applyStyle">{{appName}}</div>
+    
+    
+        <!--Getting CSS properties from an Array:
+Styles are often shared across multiple elements.
+   For multiple style definitions duting binding, I
+   can use JS array
+
+   Strive to keep CSS separate from data
+-->
+    <h2 v-bind:style="[accentColor, headers]">CSS 
+        properties from an array.
+    </h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script type="text/javascript">
+      var v=new Vue({
+          el:"#app-name",
+          data:{
+              appName:"Personal accounting",
+              colr:"red",
+              color:"green",
+              applyStyle:{
+                  color:"green",
+                  fontFamily:"arial",
+                  fontSize:"20px"
+              },
+              accentColor:{
+                  color:'#FF6A10'
+              },
+              headers:{
+                  fontFamily:'Verdana',
+                  magin:100
+              }
+          }
+      })
+    </script>
+</body>
+</html>

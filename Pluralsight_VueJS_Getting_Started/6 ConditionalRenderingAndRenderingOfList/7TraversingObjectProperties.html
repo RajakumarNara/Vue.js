@@ -1,0 +1,59 @@
+<!--For directive can be used to traverse object properties.
+Ex: If I use JS object as source, will get list of property values.
+
+String and number display as useval, however if property is an array or another
+object it render as string representation. 
+
+Using for directive we can get both property name and value in an object
+
+We can also get current index while looping. The index starts with 0 zero, because
+the range alias starts at one. "In the contax of properties, the alias value 
+starts at 0, not 1". Iterate over an object - Vue gets keys via Object.keys() fun.
+This fun returns array of properties in JS object. Different JS engines return
+properties in different order for that reason if you need to list the properties
+in a consistant order you need to create the array of properties your self. In
+either case v-for directive can be useful when are you traversing object properties.
+
+
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="v in currentUser">
+                    {{v}}
+                </li>
+            </ul>
+            <hr/>
+            <ul>
+                    <li v-for="(v,k) in currentUser">
+                       {{k}} -> {{v}}
+                    </li>
+                </ul>
+                <hr/>
+            <ul>
+                    <li v-for="(v,k,i) in currentUser">
+                      {{i}} - {{k}} -> {{v}}
+                    </li>
+                </ul>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js"></script>
+        <script>
+        var v=new Vue({
+            el:"#app",
+            data:{
+                currentUser:{
+                    firstName:"Rajakumar",
+                    salary:2000,
+                    tags:['male','fair'],
+                    socialMedia:{
+                        facebook:"dd@22",
+                        youtube:"sss"
+                    }
+                }
+            }
+        })
+        </script>
+    </body>
+</html>

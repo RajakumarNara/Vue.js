@@ -1,0 +1,45 @@
+<!--Using JS Expression:
+Vue let us use the full power of JS expression
+in bindings. If I work with JS any other
+language for a while, easy to forget any 
+specific terminology for that reason
+    Begin by exactly from there I have to 
+use JS expression in our templates. If I 
+probably see JS looks like this:
+
+var isLocal=location.host.includes('localhost');
+
+This line of code,
+
+JS expression is a line of code that produces
+a value.
+
+Using JS expression in template use {{..}}.
+
+Expression - evaluated within the context of view
+-->
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div id="app-name">
+            <h2 
+            v-text="appName"
+            v-bind:style="{color:isOnline?
+            '#FF6A00':'#000'
+            }">
+            </h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script type="text/javascript">
+        var v=new Vue({
+            el:"#app-name",
+            data:{
+                appName:"Personal accounting",                
+                isOnline:true             
+            }
+        })
+    </script>
+</body>
+</html>

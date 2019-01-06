@@ -1,0 +1,41 @@
+<!-- 
+    v-for and v-if directive can use together,
+    v-for has high precedence. This means that while v-for directive is iterating,
+    it will run first on each iteration then v-if directive run separately.
+    This is handy, if you render specific item in a list.    
+-->
+<html>
+    <head></head>
+    <body>
+        <div id="app">
+         <div>
+             <label><strong>Healthy items</strong></label>
+             <input type="range" v-model="maxAbv" min="0" max="100"/>
+             <small>{{maxAbv}}</small>
+         </div>
+         <ul>
+             <li><strong>Healthy foods</strong></li>
+             <li v-for="h in HealthyItem"
+                 v-if="h.abv < maxAbv">
+                 {{h}}
+             </li>
+         </ul>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js"></script>
+        <script>
+        var v=new Vue({
+            el:"#app",
+            data:{
+                HealthyItem:[
+                {name:'Milk',abv:9.6},
+                {name:'water',abv:7.4},
+                {name:'coconut',abv:6.5},
+                {name:'Mango',abv:5.4},
+                {name:'Orange',abv:3.7}
+            ],
+            maxAbv:7.0
+            }
+        })
+        </script>
+    </body>
+</html>
