@@ -1,0 +1,5 @@
+npm install -g @vue/cli@3.0.0-rc.3  or @3.0.0
+
+vue create projectName
+
+H:\Project activities\vueJs_GitClone\vuejsStart\build-a-bot> npm run serve
